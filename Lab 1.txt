@@ -1,0 +1,51 @@
+--Lab 1
+
+-----install SQL Server
+---- Install SSMS
+--download adventureworks
+--restore adventureworks
+
+
+USE [PRACTICALDB]
+GO
+
+/****** Object:  Table [dbo].[Employees2]    Script Date: 19/08/2024 9:56:01 am ******/
+---install SQL Server
+-- Install SSMS
+
+CREATE DATABASE PRACTICALDB;
+USE PRACTICALDB;
+
+CREATE TABLE [dbo].[Employees](
+	[Pid] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	[title] [char](10) NOT NULL,
+	[firstName] [varchar](25) NOT NULL,
+	[surname] [varchar](25) NOT NULL,
+	[Department] [varchar](25) NULL)
+
+	INSERT INTO [Employees]
+	VALUES ('Dr','Nakae','Ndemu','Ontology'),
+	('Ms','Kella', 'Name','Marketing'),('Mr','Gigi','Pandu','Gaming')
+
+---T_SQL Stored procedure to Retrieve all the details of employees with an input parameter
+
+-- Create a stored procedure named GetContacts_All1
+CREATE PROC GetContacts_All1
+-- Declare a parameter named @title of type CHAR(10)
+@title CHAR(10)
+AS
+-- Begin the body of the stored procedure
+BEGIN
+    -- Select the columns title, firstname, and surname from the Employees table
+    SELECT title, firstname, surname 
+    -- From the Employees2 table in the dbo schema
+    FROM dbo.Employees2
+    -- Where the title column matches the value of the @title parameter
+    WHERE title = @title
+    -- This prompts the user to provide a title when executing the procedure
+END
+
+-- Execute the stored procedure GetContacts_All1 with the parameter 'Mr'
+EXEC GetContacts_All1 'Mr'
+
+
