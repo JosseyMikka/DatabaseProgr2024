@@ -1,0 +1,25 @@
+USE [PRACTICALDB]
+GO
+
+/****** Object:  Table [dbo].[Films]    Script Date: 27/08/2024 10:05:35 am ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Films](
+	[fno] [int] IDENTITY(100,1) NOT NULL,
+	[filmName] [nvarchar](50) NULL,
+	[filmDate] [datetime] NULL,
+	[filmTime] [timestamp] NULL
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Films] ADD  CONSTRAINT [DF_Films_filmName]  DEFAULT (' ') FOR [filmName]
+GO
+
+ALTER TABLE [dbo].[Films] ADD  CONSTRAINT [DF_Films_filmDate]  DEFAULT (' ') FOR [filmDate]
+GO
+
+
